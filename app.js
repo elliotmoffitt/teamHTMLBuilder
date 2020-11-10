@@ -27,6 +27,46 @@ function mainMenu() {
                 return "Please enter a name"
 
             }
+        }])
+        inquirer.prompt([{
+            type:"input",
+            name:"managerID",
+            message:"What is your manager's ID",
+            validate: answer => {
+                if(answer !=="") {
+                    return true;
+                }
+                return "Please enter an ID"
+
+            }
+        }])        
+        .then(answer => {
+            const manager = new Manager(answers.id)
+            teamMembers.push(manager)
+            idArray.push(answers.managerId)
+
+        })
+    }
+
+    createManager()
+
+
+
+
+
+    function createManager () {
+        console.log("Please build your team");
+        inquirer.prompt([{
+            type:"input",
+            name:"managerName",
+            message:"What is your manager's name?",
+            validate: answer => {
+                if(answer !=="") {
+                    return true;
+                }
+                return "Please enter a name"
+
+            }
         }]).then(answer => {
             const manager = new Manager(answers.id)
             teamMembers.push(manager)
@@ -35,12 +75,103 @@ function mainMenu() {
         })
     }
 
-
-    
     createManager()
-}
 
-mainMenu()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} mainMenu()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
