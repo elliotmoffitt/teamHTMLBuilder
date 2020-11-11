@@ -108,7 +108,66 @@ function mainMenu() {
         });
     }
 
-    createManager()
+    function addIntern() {
+        inquirer.prompt([{
+            type: "input",
+            name: "internName",
+            message: "Enter intern's name",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a name";
+            }
+        },
+        {
+            type: "input",
+            name: "internID",
+            message: "Enter intern's ID",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter an ID";
+            }
+        },
+        {
+            type: "input",
+            name: "internEmail",
+            message: "Enter intern's email",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter an email";
+            }
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "Enter intern's school",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter an school";
+            }
+        }
+        ]).then(answers => {
+            const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+            teamMembers.push(intern);
+            idArray.push(answers.internId);
+            createTeam();
+          });
+
+
+
+    };
+}
+
+
+
+createManager()
 
 
 
@@ -116,7 +175,7 @@ function mainMenu() {
 
 
 
-} mainMenu()
+mainMenu()
 
 
 
