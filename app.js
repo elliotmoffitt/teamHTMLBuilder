@@ -40,7 +40,7 @@ function mainMenu() {
 
             }
         }])
-        
+
         inquirer.prompt([{
             type: "input",
             name: "managerEmail",
@@ -53,7 +53,7 @@ function mainMenu() {
 
             }
         }])
-        
+
         inquirer.prompt([{
             type: "input",
             name: "managerOfficeNumber",
@@ -66,7 +66,7 @@ function mainMenu() {
 
             }
         }])
-        
+
             .then(answer => {
                 const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber)
                 teamMembers.push(manager)
@@ -81,25 +81,31 @@ function mainMenu() {
 
 
 
-    function createManager() {
-        console.log("Please build your team");
+    function createTeam() {
         inquirer.prompt([{
-            type: "input",
-            name: "managerName",
-            message: "What is your manager's name?",
-            validate: answer => {
-                if (answer !== "") {
-                    return true;
-                }
-                return "Please enter a name"
-
+            type: "list",
+            name: "managerChoice",
+            message: "What type of team member do you want to add?",
+            choices: [
+                "Engineer",
+                "Intern",
+                "I don't want to add any more"
+            ]
+        }]).then(userChoice => {
+            switch (userChoice.memberChoice) {
+                case "Engineer":
+                    addEngineer();
+                    break;
+                case "Intern":
+                    addIntern();
+                    break;
+                default:
+                    buildTeam();
             }
-        }]).then(answer => {
-            const manager = new Manager(answers.id)
-            teamMembers.push(manager)
-            idArray.push(answers.managerId)
 
-        })
+
+
+        });
     }
 
     createManager()
@@ -110,89 +116,7 @@ function mainMenu() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 } mainMenu()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
