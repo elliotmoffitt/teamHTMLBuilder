@@ -67,7 +67,7 @@ function mainMenu() {
             }
         }])
 
-            .then(answer => {
+            .then(answers => {
                 const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber)
                 teamMembers.push(manager)
                 idArray.push(answers.managerId)
@@ -75,7 +75,7 @@ function mainMenu() {
             })
     }
 
-    createManager()
+
 
 
 
@@ -163,11 +163,12 @@ function mainMenu() {
 
 
     };
+    createManager()
 }
 
 
 
-createManager()
+
 
 
 
